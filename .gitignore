@@ -1,0 +1,15 @@
+# Entorno virtual de Python
+.venv/
+venv/
+
+# Archivos de caché de Python
+__pycache__/
+
+# Archivos de configuración del IDE (PyCharm)
+.idea/
+
+# Carpeta de instancia de Flask (si la usas para BBDD o secretos)
+instance/
+
+# Archivos de sesión de Flask
+flask_session/

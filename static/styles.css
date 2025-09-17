@@ -1,0 +1,120 @@
+/* Size for brand */
+.navbar-brand {
+    font-size: 24px; /* Adjust font size as needed */
+    color: #999; /* Set a darker color for better contrast */
+}
+
+#logo {
+    height: 40px; /* Adjust height as needed */
+    width: auto; /* Maintain aspect ratio */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0; /* Set a lighter background color */
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    background-color: #e0e0e0;
+    /*background-color: #e0e0e0; /* Lighter background color */
+}
+
+nav ul li {
+    margin: 0;
+    padding: 10px 20px;
+}
+
+nav ul li a {
+    color: #333; /* Darker text color */
+    text-decoration: none;
+}
+
+#sidebar {
+    float: left;
+    width: 20%;
+    background-color: #f4f4f4;
+    padding: 15px;
+}
+
+#content {
+    margin-left: 22%;
+    padding: 15px;
+}
+
+/* Estilo para los botones */
+.btn {
+    font-size: 14px;
+    padding: 8px 16px;
+    border-radius: 5px; /* Bordes redondeados */
+    border: none;
+    cursor: pointer;
+}
+
+/* Botón de editar - color discreto */
+.btn-warning {
+    background-color: #6c757d; /* Gris oscuro */
+    color: #fff; /* Texto blanco */
+    border: 1px solid #5a6268; /* Borde más oscuro para dar contraste */
+}
+
+/* Botón de editar al hacer hover */
+.btn-warning:hover {
+    background-color: #5a6268; /* Gris más oscuro */
+    color: #fff;
+}
+
+/* Botón de editar al hacer focus */
+.btn-warning:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, 0.5); /* Sombra sutil */
+}
+
+/* Botón de editar al hacer active (clic) */
+.btn-warning:active {
+    background-color: #495057; /* Gris más oscuro al hacer clic */
+    border-color: #343a40;
+}
+
+#filters-container {
+    display: none;
+    transition: all 0.3s ease-in-out;
+}
+#filters-container.show {
+    display: block;
+}
+
+/* Centrar el título de la página */
+h1.text-center {
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+/* Ajustar los bordes de las pestañas */
+.nav-tabs .nav-link {
+    border-radius: 0;
+}
+
+/* Mejorar el espacio entre los elementos dentro de cada tab */
+.tab-content h3 {
+    margin-top: 20px;
+}
+
+/* Ajustar altura y espaciado */
+#limpieza-bar .navbar {
+    height: 40px; /* Reduce la altura de la barra secundaria */
+    font-size: 0.875rem; /* Reduce el tamaño de la fuente (small) */
+}
+
+/* Opciones de menú compactas */
+#limpieza-bar .nav-item {
+    margin-right: 15px; /* Ajusta el espaciado entre elementos */
+}
+
+#logo {
+    max-height: 50px;
+}

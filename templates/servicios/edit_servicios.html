@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Editar Servicio - {{ servicio.nombre }}
+{% endblock %}
+
+{% block main %}
+<h4>Editar Servicio</h4>
+<form method="POST" action="{{ url_for('servicios.edit', servicio_id=servicio.id) }}">
+    <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input type="text" id="nombre" name="nombre" class="form-control" value="{{ servicio.nombre }}" required>
+    </div>
+    <div class="mb-3">
+        <label for="descripcion" class="form-label">Descripción</label>
+        <textarea id="descripcion" name="descripcion" class="form-control">{{ servicio.descripcion }}</textarea>
+    </div>
+    <div class="mb-3">
+        <label for="precio" class="form-label">Precio</label>
+        <input type="number" id="precio" name="precio" step="0.01" class="form-control" value="{{ servicio.precio }}" required>
+    </div>
+    <div class="mb-3">
+        <label for="fecha_desde" class="form-label">Fecha Desde</label>
+        <input type="date" id="fecha_desde" name="fecha_desde" class="form-control" value="{{ servicio.fecha_desde }}">
+    </div>
+    <div class="mb-3">
+        <label for="fecha_hasta" class="form-label">Fecha Hasta</label>
+        <input type="date" id="fecha_hasta" name="fecha_hasta" class="form-control" value="{{ servicio.fecha_hasta }}">
+    </div>
+    <div class="mb-3">
+        <label for="tipo_servicio_id" class="form-label">Tipo de Servicio</label>
+        <select id="tipo_servicio_id" name="tipo_servicio_id" class="form-select">
+            {% for tipo in tipos_servicios %}
+            <option value="{{ tipo.id }}" {% if tipo.id == servicio.tipo_servicio_id %}selected{% endif %}>
+                {{ tipo.nombre }}
+            </option>
+            {% endfor %}
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+</form>
+{% endblock %}

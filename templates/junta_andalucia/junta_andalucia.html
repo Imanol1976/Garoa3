@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Junta_andalucia
+{% endblock %}
+
+{% block main %}
+<form method="POST" action="/junta_andalucia">
+    <div class="mb-3">
+        <label for="expediente" class="form-label">Código de Expediente</label>
+        <input type="text" class="form-control" id="expediente" name="expediente" required>
+    </div>
+    <div class="mb-3">
+        <label for="lote" class="form-label">Lote</label>
+        <input type="text" class="form-control" id="lote" name="lote" required>
+    </div>
+    <div class="mb-3">
+        <label for="centro" class="form-label">Código de Centro</label>
+        <input type="text" class="form-control" id="centro" name="centro" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
+{% endblock %}

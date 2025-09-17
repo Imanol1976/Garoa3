@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Eguraldia
+{% endblock %}
+
+{% block main %}
+<form method="POST" action="/eguraldia">
+    <div class="mb-3">
+        <label for="lekua" class="form-label">Localización</label>
+        <input type="text" class="form-control" id="lekua" name="lekua" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
+
+{% if weather %}
+    <h3>Zure eguraldia </h3>
+    <h3>Tiempo en {{ lekua }}:</h3>
+    <p>Temperatura: {{ weather['main']['temp'] }}°C</p>
+    <p>Temperatura minima: {{ weather['main']['temp_min'] }}°C</p>
+    <p>Temperatura maxima: {{ weather['main']['temp_max'] }}°C</p>
+    <p>Humedad: {{ weather['main']['humidity'] }}</p>
+    <p>Presion: {{ weather['main']['pressure'] }} Bar</p>
+    <p>Descripción: {{ weather['weather'][0]['description'] }}</p>
+{% endif %}
+{% endblock %}

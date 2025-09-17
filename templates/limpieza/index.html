@@ -1,0 +1,97 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Servicios Limpieza
+{% endblock %}
+
+{% block main %}
+<h1>Lista de Servicios de Limpieza </h1>
+
+<!-- Botón para mostrar/ocultar los filtros y para añadir un nuevo centro -->
+<div class="d-flex justify-content-between mb-3">
+    <div>
+        <button id="toggle-filters" class="btn btn-primary">
+            <i class="bi bi-search"></i> Filtrar
+        </button>
+    </div>
+    <div>
+        <a href="{{ url_for('servicio-limpieza.add') }}" class="btn btn-success">
+            <i class="bi bi-plus-circle"></i> Nuevo Servicio
+        </a>
+    </div>
+</div>
+
+
+<!-- Formulario de filtros (inicialmente oculto) -->
+<div id="filters-container" class="mb-4" style="display: none;">
+    <form method="GET" action="{{ url_for('centros.index') }}" class="card p-3">
+        <div class="row g-3">
+            <div class="col-md-3">
+                <label for="filter-id" class="form-label">ID</label>
+                <input type="text" name="id" id="filter-id" class="form-control" placeholder="Buscar por ID">
+            </div>
+            <div class="col-md-3">
+                <label for="filter-nombre" class="form-label">Nombre</label>
+                <input type="text" name="nombre" id="filter-nombre" class="form-control" placeholder="Buscar por nombre">
+            </div>
+            <div class="col-md-3">
+                <label for="filter-direccion" class="form-label">Dirección</label>
+                <input type="text" name="direccion" id="filter-direccion" class="form-control" placeholder="Buscar por dirección">
+            </div>
+            <div class="col-md-3">
+                <label for="filter-localidad" class="form-label">Localidad</label>
+                <input type="text" name="localidad" id="filter-localidad" class="form-control" placeholder="Buscar por localidad">
+            </div>
+        </div>
+        <div class="mt-3">
+            <button type="submit" class="btn btn-success">Aplicar Filtros</button>
+        </div>
+    </form>
+</div>
+
+<!-- Tabla de resultados -->
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Dirección</th>
+            <th>Localidad</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for centro in centros %}
+        <tr>
+            <td>{{ centro['id'] }}</td>
+            <td>{{ centro['nombre'] }}</td>
+            <td>{{ centro['direccion'] }}</td>
+            <td>{{ centro['localidad'] }}</td>
+            <td>
+                <a href="{{ url_for('centros.edit', centro_id=centro['id']) }}" class="btn btn-warning btn-sm">Editar</a>
+                <form action="{{ url_for('centros.delete', centro_id=centro['id']) }}" method="post" style="display:inline;">
+                    <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                </form>
+                <!-- Botón de Servicios -->
+              <!--  <a href="{{ url_for('servicios.index', centro_id=centro['id']) }}" class="btn btn-light btn-sm">Servicios</a>-->
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<!-- Paginación -->
+<div class="mt-4 d-flex justify-content-between">
+    <span>Página {{ page }} de {{ total_paginas }}</span>
+    <div>
+        {% if page > 1 %}
+        <a class="btn btn-secondary btn-sm" href="{{ url_for('centros.index', page=page-1, nombre=nombre, localidad=localidad) }}">Anterior</a>
+        {% endif %}
+        {% if page < total_paginas %}
+        <a class="btn btn-secondary btn-sm" href="{{ url_for('centros.index', page=page+1, nombre=nombre, localidad=localidad) }}">Siguiente</a>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

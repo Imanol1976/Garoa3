@@ -1,0 +1,85 @@
+{% block main %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Entities</title>
+</head>
+<body>
+    <div class="container my-5">
+        <h1 class="text-center mb-4">Gestión de Entidades</h1>
+
+        <!-- Crear o seleccionar Edificio -->
+        <h2>Edificios</h2>
+        <form action="/create_building" method="POST" class="mb-4">
+            <div class="form-group mb-3">
+                <label for="existing_building">Seleccionar Edificio Existente:</label>
+                <select name="existing_building" id="existing_building" class="form-select">
+                    {% for building in buildings %}
+                    <option value="{{ building.id }}">{{ building.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group mb-3">
+                <label for="new_building">O Crear Nuevo Edificio:</label>
+                <input type="text" name="new_building" id="new_building" placeholder="Nombre del Edificio" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar Edificio</button>
+        </form>
+
+        <!-- Crear o seleccionar Planta -->
+        <h2>Plantas</h2>
+        <form action="/create_floor" method="POST" class="mb-4">
+            <div class="form-group mb-3">
+                <label for="building_id">Seleccionar Edificio para asociar la Planta:</label>
+                <select name="building_id" id="building_id" class="form-select">
+                    {% for building in buildings %}
+                    <option value="{{ building.id }}">{{ building.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group mb-3">
+                <label for="existing_floor">Seleccionar Planta Existente:</label>
+                <select name="existing_floor" id="existing_floor" class="form-select">
+                    {% for floor in floors %}
+                    <option value="{{ floor.id }}">{{ floor.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group mb-3">
+                <label for="new_floor">O Crear Nueva Planta:</label>
+                <input type="text" name="new_floor" id="new_floor" placeholder="Nombre de la Planta" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar Planta</button>
+        </form>
+
+        <!-- Crear o seleccionar Hueco -->
+        <h2>Huecos</h2>
+        <form action="/create_space" method="POST" class="mb-4">
+            <div class="form-group mb-3">
+                <label for="floor_id">Seleccionar Planta para asociar el Hueco:</label>
+                <select name="floor_id" id="floor_id" class="form-select">
+                    {% for floor in floors %}
+                    <option value="{{ floor.id }}">{{ floor.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group mb-3">
+                <label for="existing_space">Seleccionar Hueco Existente:</label>
+                <select name="existing_space" id="existing_space" class="form-select">
+                    {% for space in spaces %}
+                    <option value="{{ space.id }}">{{ space.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group mb-3">
+                <label for="new_space">O Crear Nuevo Hueco:</label>
+                <input type="text" name="new_space" id="new_space" placeholder="Nombre del Hueco" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar Hueco</button>
+        </form>
+    </div>
+</body>
+</html>
+{% endblock %}

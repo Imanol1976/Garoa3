@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Lista de Centros
+{% endblock %}
+
+{% block main %}
+<h1>Lista de Centros</h1>
+
+<!-- Formulario de filtros -->
+
+<form method="GET" action="{{ url_for('centros.index') }}" class="mb-3">
+
+
+<div class="text-end mb-3">
+    <a href="{{ url_for('centros.add') }}" class="btn btn-primary">Añadir Nuevo Centro</a>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Dirección</th>
+            <th>Localidad</th>
+            <th>Acciones</th> 
+        </tr>
+    </thead>
+    <tbody>
+        {% for centro in centros %}
+            <tr>
+                <td>{{ centro.id }}</td>
+                <td>{{ centro.nombre }}</td>
+                <td>{{ centro.direccion }}</td>
+                <td>{{ centro.localidad }}</td>
+                <td>
+                    <a href="{{ url_for('centros.edit', centro_id=centro.id) }}" class="btn btn-warning btn-sm">Editar</a>
+                    <a href="{{ url_for('centros.delete', centro_id=centro.id) }}" class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

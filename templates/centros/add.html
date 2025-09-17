@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Añadir Nuevo Centro
+{% endblock %}
+
+{% block main %}
+<h1>Añadir Nuevo Centro</h1>
+
+<!-- Formulario para añadir centro -->
+<form method="POST" action="{{ url_for('centros.add') }}">
+    <div class="card p-4">
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" id="nombre" name="nombre" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="direccion" class="form-label">Dirección</label>
+            <input type="text" id="direccion" name="direccion" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="localidad" class="form-label">Localidad</label>
+            <input type="text" id="localidad" name="localidad" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="telefono" class="form-label">Teléfono</label>
+            <input type="text" id="telefono" name="telefono" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="email" class="form-label">email</label>
+            <input type="text" id="email" name="email" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="cp" class="form-label">Código Postal</label>
+            <input type="text" id="cp" name="cp" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="provincia_id" class="form-label">Id Provincia</label>
+            <input type="text" id="provincia_id" name="provincia_id" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-success">Guardar Centro</button>
+    </div>
+</form>
+
+{% endblock %}
+
+
